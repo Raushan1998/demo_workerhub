@@ -4,7 +4,6 @@
 // and two actions.
 
 import 'package:flutter/material.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,63 +30,47 @@ class MyStatelessWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const listTile = const ListTile(
+      //leading: Icon(Icons.album),
+      leading: Text("Ends in   "),
+
+      //TODO:set logo of company
+      title: Text('Project Name'),
+      subtitle: Text('Company Name'),
+      trailing: Icon(
+        Icons.share,
+      ),
+    );
     return Center(
       child: Card(
-        elevation: 5,
+        elevation: 0,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10),
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10)),
-            side: BorderSide(width: 4, color: Colors.yellow)),
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30)),
+            side: BorderSide(width: 1, color: Colors.black)),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const ListTile(
-              //leading: Icon(Icons.album),
-              leading:
-                  Icon(Icons.location_searching), //TODO:set logo of company
-              title: Text('Project Name'),
-              subtitle: Text('Company Name'),
-            ),
-            StepProgressIndicator(
-                totalSteps: 4,
-                currentStep: 4, //change using case
-                size: 20,
-                selectedColor: Colors.green,
-                customStep: (index, color, _) => color == Colors.green
-                    ? Container(
-                        color: color,
-                        child: Align(
-                            alignment: Alignment.bottomRight,
-                            child: Icon(Icons.check_circle_outline)),
-                      )
-                    : Container(
-                        color: color,
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                        ))),
+            listTile,
+
             // ignore: deprecated_member_use
             new Container(
               child: new Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Expanded(
-                    child: FlatButton(
-                      child: const Text('Cancel'),
-                      color: Colors.red,
-                      onPressed: () {},
-                    ),
+                  FlatButton(
+                    child: const Text('View Benifits'),
+                    color: Colors.blue,
+                    onPressed: () {},
                   ),
-                  Expanded(
-                    child: FlatButton(
-                      child: const Text('Show Details'),
-                      color: Colors.blue,
-                      padding: EdgeInsets.all(10),
-                      onPressed: () {},
-                    ),
+                  FlatButton(
+                    child: const Text('Apply Now'),
+                    color: Colors.lightGreen,
+                    padding: EdgeInsets.all(10),
+                    onPressed: () {},
                   ),
                 ],
               ),
